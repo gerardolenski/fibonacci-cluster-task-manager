@@ -5,10 +5,25 @@ mq:
   worker-queue-name: ${WORKER_QUEUE_NAME}
 
 spring:
+  # ActiveMQ broker
   activemq:
     broker-url: ${BROKER_URL}
     user: ${BROKER_USER}
     password: ${BROKER_PASSWORD}
+
+  # PostgreSQL database
+  datasource:
+    url: ${POSTGRES_DATASOURCE_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    hikari:
+      maximum-pool-size: ${POSTGRESS_POOL_SIZE:5}
+      connection-timeout: ${POSTGRESS_CONNECTION_TIMEOUT:5000}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: false
 
 logging:
   level:

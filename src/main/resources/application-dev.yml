@@ -10,6 +10,26 @@ spring:
     user: admin
     password: admin
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_manager
+    username: postgres
+    password: postgres
+    hikari:
+      maximum-pool-size: 2
+      connection-timeout: 5000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#    properties:
+#      dialect: org.hibernate.dialect.PostgreSQL95Dialect
+#
+#      show_sql: true
+#      use_sql_comments: true
+#      format_sql: true
+#      generate-ddl: true
+
 logging:
   level:
     root: info
