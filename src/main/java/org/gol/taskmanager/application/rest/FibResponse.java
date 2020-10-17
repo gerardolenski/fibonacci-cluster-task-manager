@@ -1,6 +1,5 @@
 package org.gol.taskmanager.application.rest;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

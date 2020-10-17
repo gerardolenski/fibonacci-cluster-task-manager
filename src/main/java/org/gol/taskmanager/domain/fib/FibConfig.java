@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
-class FibConfiguration {
+class FibConfig {
 
-    @Bean("fibManager")
-    FibManager initFibManager(WorkerManagerPort workerManagerPort) {
+    @Bean
+    FibPort fibManager(WorkerManagerPort workerManagerPort) {
         return new FibManager(workerManagerPort);
     }
 }

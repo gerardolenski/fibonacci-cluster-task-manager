@@ -1,8 +1,8 @@
 package org.gol.taskmanager.infrastructure.amq;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.gol.taskmanager.domain.config.ConfigurationPort;
+import org.gol.taskmanager.domain.manager.WorkerNotificationPort;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ class AmqConfig {
 
     private static final String TYPE_ID_PROPERTY_NAME = "_type";
 
-    @Bean("jacksonJmsMessageConverter")
+    @Bean
     MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(TEXT);
@@ -38,7 +38,7 @@ class AmqConfig {
     }
 
     @Bean
-    AmqWorkerManagerAdapter amqWorkerManagerAdapter(JmsTemplate jmsTemplate, ConfigurationPort configurationPort) {
+    WorkerNotificationPort amqWorkerManagerAdapter(JmsTemplate jmsTemplate, ConfigurationPort configurationPort) {
         return new AmqWorkerManagerAdapter(jmsTemplate, configurationPort.getWorkerQueueName());
     }
 }

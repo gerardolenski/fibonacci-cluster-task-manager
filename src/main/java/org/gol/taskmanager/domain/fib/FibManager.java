@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.gol.taskmanager.domain.fib.FibAlgorithm.*;
-import static org.gol.taskmanager.domain.fib.FibWorkerMessage.ofFibWorkerMessage;
+import static org.gol.taskmanager.domain.fib.FibWorkerData.ofFibWorkerData;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -31,13 +31,13 @@ class FibManager implements FibPort {
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
-        log.info("Start task {} for calculate FIBONACCI series: {}", taskId, inList);
+        log.info("Starting task {} of FIBONACCI series calculation for: {}", taskId, inList);
 
         inList.stream()
                 .flatMap(number -> Stream.of(
-                        ofFibWorkerMessage(taskId, number, RECURSIVE),
-                        ofFibWorkerMessage(taskId, number, ITERATIVE),
-                        ofFibWorkerMessage(taskId, number, BINETS)
+                        ofFibWorkerData(taskId, number, RECURSIVE),
+                        ofFibWorkerData(taskId, number, ITERATIVE),
+                        ofFibWorkerData(taskId, number, BINETS)
                 ))
                 .forEach(workerManagerPort::processTask);
         return taskId;

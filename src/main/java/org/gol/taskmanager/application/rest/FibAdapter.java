@@ -25,7 +25,7 @@ class FibAdapter {
     public ResponseEntity<FibResponse> processFibSeries(@RequestBody FibRequest body) {
         log.info("Received FIBONACCI calculation request: {}", body);
         var taskId = fibManager.calculateSeries(body.getSeries());
-        log.info("Successfully start all FIBONACCI calculation tasks with id: {}", taskId);
+        log.info("Successfully started all FIBONACCI calculation tasks with id: {}", taskId);
         return accepted().body(ofFibResponse(taskId));
     }
 }
