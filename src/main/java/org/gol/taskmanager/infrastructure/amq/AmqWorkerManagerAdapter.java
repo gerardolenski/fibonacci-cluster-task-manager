@@ -1,0 +1,32 @@
+package org.gol.taskmanager.infrastructure.amq;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.activemq.command.ActiveMQQueue;
+import org.gol.taskmanager.domain.model.WorkerMessage;
+import org.gol.taskmanager.domain.manager.WorkerManagerPort;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessagePostProcessor;
+
+import java.util.function.Function;
+
+@Slf4j
+@RequiredArgsConstructor
+class AmqWorkerManagerAdapter implements WorkerManagerPort {
+
+    public static final String WORKER_PROPERTY_NAME = "worker";
+    private static final Function<WorkerMessage, MessagePostProcessor> TO_WORKER_PROPERTY_POSTPROCESSOR = worker ->
+            message -> {
+                message.setStringProperty(WORKER_PROPERTY_NAME, worker.getWorkerType().name());
+                return message;
+            };
+
+    private final JmsTemplate jmsTemplate;
+    private final String queueName;
+
+    @Override
+    public void processTask(WorkerMessage worker) {
+        log.debug("Send worker message: {}", worker);
+        jmsTemplate.convertAndSend(new ActiveMQQueue(queueName), worker, TO_WORKER_PROPERTY_POSTPROCESSOR.apply(worker));
+    }
+}
