@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT}
+  port: 8080
 
 mq:
   worker-queue-name: ${WORKER_QUEUE_NAME}
