@@ -7,5 +7,5 @@ ${AnsiColor.MAGENTA}
   \_/   \__,_||___/|_|\_\ \_|  |_/ \__,_||_| |_| \__,_| \__, | \___||_|
                                                          __/ |
                                                         |___/
-|| Spring Boot${spring-boot.formatted-version} || Fuel Consumption${application.formatted-version} ||
+|| Spring Boot${spring-boot.formatted-version} || Task Manager${application.formatted-version} ||
 ${AnsiColor.DEFAULT}
