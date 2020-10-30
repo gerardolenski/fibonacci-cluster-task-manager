@@ -28,6 +28,9 @@ class TaskEntity {
     @Column(name = "task_id")
     private UUID taskId;
 
+    @Column(name = "job_id")
+    private UUID jobId;
+
     @Column(name = "start_time")
     private LocalDateTime startTime;
 

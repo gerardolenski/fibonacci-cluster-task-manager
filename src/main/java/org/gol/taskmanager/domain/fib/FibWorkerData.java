@@ -10,6 +10,7 @@ import org.gol.taskmanager.domain.model.WorkerType;
 
 import java.util.UUID;
 
+import static java.util.UUID.randomUUID;
 import static lombok.AccessLevel.PRIVATE;
 import static org.gol.taskmanager.domain.model.WorkerType.FIBONACCI;
 
@@ -22,10 +23,13 @@ class FibWorkerData implements WorkerData {
     private final JobData jobData;
 
     static FibWorkerData ofFibWorkerData(UUID taskId, Integer number, FibAlgorithm algorithm) {
-        return new FibWorkerData(taskId, FibJobData.builder()
-                .number(number)
-                .algorithm(algorithm.name())
-                .build());
+        return new FibWorkerData(
+                taskId,
+                FibJobData.builder()
+                        .jobId(randomUUID())
+                        .number(number)
+                        .algorithm(algorithm.name())
+                        .build());
     }
 
     @Override
@@ -37,6 +41,7 @@ class FibWorkerData implements WorkerData {
     @Builder
     @ToString
     static class FibJobData implements JobData {
+        private final UUID jobId;
         private final Integer number;
         private final String algorithm;
     }

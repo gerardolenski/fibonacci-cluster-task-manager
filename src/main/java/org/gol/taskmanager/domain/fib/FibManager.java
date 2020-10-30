@@ -37,7 +37,8 @@ class FibManager implements FibPort {
                 .flatMap(number -> Stream.of(
                         ofFibWorkerData(taskId, number, RECURSIVE),
                         ofFibWorkerData(taskId, number, ITERATIVE),
-                        ofFibWorkerData(taskId, number, BINETS)
+                        ofFibWorkerData(taskId, number, BINETS),
+                        ofFibWorkerData(taskId, number, EXPONENTIAL)
                 ))
                 .forEach(workerManagerPort::processTask);
         return taskId;

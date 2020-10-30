@@ -18,6 +18,7 @@ class WorkerRepositoryAdapter implements WorkerRepositoryPort {
     private static final Function<WorkerData, TaskEntity> TO_ENTITY_MAPPER = workerData ->
             TaskEntity.builder()
                     .taskId(workerData.getTaskId())
+                    .jobId(workerData.getJobData().getJobId())
                     .startTime(LocalDateTime.now())
                     .build();
     private final TaskDao taskDao;
