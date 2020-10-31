@@ -28,12 +28,21 @@ class TaskEntity {
     @Column(name = "task_id")
     private UUID taskId;
 
-    @Column(name = "job_id")
-    private UUID jobId;
-
     @Column(name = "start_time")
     private LocalDateTime startTime;
 
     @Column(name = "stop_time")
     private LocalDateTime stopTime;
+
+    @Column(name = "job_id")
+    private UUID jobId;
+
+    @Column(name = "job_details")
+    private String jobDetails;
+
+    @Column(name = "job_processing_time")
+    private Long jobProcessingTime;
+
+    @Column(name = "job_result")
+    private String jobResult;
 }
