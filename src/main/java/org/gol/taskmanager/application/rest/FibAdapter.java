@@ -3,6 +3,7 @@ package org.gol.taskmanager.application.rest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.gol.taskmanager.domain.fib.FibPort;
+import org.gol.taskmanager.domain.manager.WorkerRepositoryPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +21,9 @@ import static org.springframework.http.ResponseEntity.accepted;
 class FibAdapter {
 
     private final FibPort fibManager;
+    private final WorkerRepositoryPort workerRepositoryPort;
 
-    @PostMapping(value = "calculate", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<FibResponse> processFibSeries(@RequestBody FibRequest body) {
         log.info("Received FIBONACCI calculation request: {}", body);
         var taskId = fibManager.calculateSeries(body.getSeries());

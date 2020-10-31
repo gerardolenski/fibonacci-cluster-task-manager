@@ -38,12 +38,13 @@ class TaskEntity {
     @Column(name = "job_id")
     private UUID jobId;
 
-    @Column(name = "job_details")
+    @Column(name = "job_details", length = 1000)
     private String jobDetails;
 
     @Column(name = "job_processing_time")
     private Long jobProcessingTime;
 
+    @Lob
     @Column(name = "job_result")
     private String jobResult;
 }

@@ -8,6 +8,6 @@ import java.util.stream.Stream;
 
 interface TaskDao extends JpaRepository<TaskEntity, UUID> {
 
-    Stream<TaskEntity> findByTaskIdOrderByStartTime(UUID taskId);
+    Stream<TaskEntity> findByTaskIdAndStopTimeNotNullOrderByStartTime(UUID taskId);
     Optional<TaskEntity> findByTaskIdAndJobId(UUID taskId, UUID jobId);
 }
