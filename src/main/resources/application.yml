@@ -3,6 +3,10 @@ server:
 
 mq:
   worker-queue-name: ${WORKER_QUEUE_NAME}
+  result-consumer:
+    concurrency: ${RESULT_LISTENER_CONCURRENCY}
+    fib-id: ${FIB_RESULT_TYPE_ID:org.gol.fibworker.infrastructure.amq.FibResultMessage}
+
 
 spring:
   # ActiveMQ broker

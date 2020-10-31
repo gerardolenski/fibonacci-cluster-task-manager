@@ -3,6 +3,9 @@ server:
 
 mq:
   worker-queue-name: worker-test
+  result-consumer:
+    concurrency: 1-2
+    fib-id: org.gol.fibworker.infrastructure.amq.FibResultMessage
 
 spring:
   activemq:
