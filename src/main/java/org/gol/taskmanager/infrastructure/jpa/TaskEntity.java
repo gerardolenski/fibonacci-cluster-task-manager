@@ -15,8 +15,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "task", indexes = {
-        @Index(name = "task_id", columnList = "task_id"),
-        @Index(name = "id", columnList = "id")})
+        @Index(name = "task_task_id_start_time_idx", columnList = "task_id, start_time"),
+        @Index(name = "task_job_id_key", columnList = "job_id", unique = true),
+        @Index(name = "task_task_id_job_id_key", columnList = "task_id, job_id", unique = true)})
 class TaskEntity {
 
     @Id
