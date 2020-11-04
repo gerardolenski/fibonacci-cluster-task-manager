@@ -6,21 +6,21 @@ import org.gol.taskmanager.domain.manager.WorkerManagerPort;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static org.gol.taskmanager.domain.fib.FibAlgorithm.*;
 import static org.gol.taskmanager.domain.fib.FibWorkerData.ofFibWorkerData;
 
 @Slf4j
 @RequiredArgsConstructor
 class FibManager implements FibPort {
 
-    private final WorkerManagerPort workerManagerPort;
-
     private static final Predicate<Integer> NATURAL_NUMBER = i -> i >= 0;
+
+    private final WorkerManagerPort workerManagerPort;
+    private final Set<FibAlgorithm> activeAlgorithms;
 
     @Override
     public UUID calculateSeries(List<Integer> series) {
@@ -34,13 +34,10 @@ class FibManager implements FibPort {
         log.info("Starting task {} of FIBONACCI series calculation for: {}", taskId, inList);
 
         inList.stream()
-                .flatMap(number -> Stream.of(
-                        ofFibWorkerData(taskId, number, RECURSIVE),
-                        ofFibWorkerData(taskId, number, ITERATIVE),
-                        ofFibWorkerData(taskId, number, BINETS),
-                        ofFibWorkerData(taskId, number, EXPONENTIAL)
-                ))
+                .flatMap(number -> activeAlgorithms.stream()
+                        .map(algorithm -> ofFibWorkerData(taskId, number, algorithm)))
                 .forEach(workerManagerPort::processTask);
+
         return taskId;
     }
 }

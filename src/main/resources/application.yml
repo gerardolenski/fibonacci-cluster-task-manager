@@ -7,6 +7,8 @@ mq:
     concurrency: ${RESULT_LISTENER_CONCURRENCY}
     fib-id: ${FIB_RESULT_TYPE_ID:org.gol.fibworker.infrastructure.amq.FibResultMessage}
 
+fib:
+  algorithms: ${FIB_ALGORITHMS:ITERATIVE,RECURSIVE,BINETS,EXPONENTIAL}
 
 spring:
   # ActiveMQ broker
