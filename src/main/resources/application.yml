@@ -16,7 +16,6 @@ spring:
     broker-url: ${BROKER_URL}
     user: ${BROKER_USER}
     password: ${BROKER_PASSWORD}
-    in-memory: false
 
   # PostgreSQL database
   datasource:
@@ -42,7 +41,7 @@ management:
         liveness:
           include: livenessSimulator
         readiness:
-          include: db, jms, diskSpace
+          include: db, jms, amqFailover, diskSpace
 
 logging:
   level:
