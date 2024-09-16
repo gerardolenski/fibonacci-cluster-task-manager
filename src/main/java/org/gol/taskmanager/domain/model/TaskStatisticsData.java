@@ -4,17 +4,17 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public interface TaskStatisticsData {
-    UUID getTaskId();
+    UUID taskId();
 
-    LocalDateTime getStartTime();
+    LocalDateTime startTime();
 
-    LocalDateTime getStopTime();
+    LocalDateTime stopTime();
 
-    UUID getJobId();
+    UUID jobId();
 
-    String getJobDetails();
+    String jobDetails();
 
-    String getJobResult();
+    String jobResult();
 
-    Long getJobProcessingTime();
+    Long jobProcessingTime();
 }

@@ -2,16 +2,17 @@ package org.gol.taskmanager.infrastructure.amq;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import org.gol.taskmanager.domain.config.ConfigurationPort;
+
 import org.gol.taskmanager.domain.manager.WorkerNotificationPort;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 
-import javax.jms.ConnectionFactory;
+import jakarta.jms.ConnectionFactory;
 
 import static com.fasterxml.jackson.annotation.JsonCreator.Mode.PROPERTIES;
 import static org.springframework.jms.support.converter.MessageType.TEXT;
@@ -24,8 +25,8 @@ class AmqProducerConfig {
     @Bean
     WorkerNotificationPort amqWorkerManagerAdapter(
             @Qualifier("jmsConnectionFactory") ConnectionFactory connectionFactory,
-            ConfigurationPort configurationPort) {
-        return new AmqWorkerManagerAdapter(initJmsTemplate(connectionFactory), configurationPort.getWorkerQueueName());
+            @Value("${mq.worker-queue-name}") String workerQueueName) {
+        return new AmqWorkerManagerAdapter(initJmsTemplate(connectionFactory), workerQueueName);
     }
 
     private JmsTemplate initJmsTemplate(ConnectionFactory connectionFactory) {

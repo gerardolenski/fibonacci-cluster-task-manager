@@ -4,9 +4,9 @@ import java.util.UUID;
 
 public interface WorkerData {
 
-    WorkerType getWorkerType();
+    WorkerType workerType();
 
-    UUID getTaskId();
+    UUID taskId();
 
-    JobData getJobData();
+    JobData jobData();
 }

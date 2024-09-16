@@ -3,13 +3,14 @@ package org.gol.taskmanager.domain.model;
 import java.util.UUID;
 
 public interface ResultData {
-    UUID getTaskId();
 
-    UUID getJobId();
+    UUID taskId();
 
-    String getResult();
+    UUID jobId();
 
-    Long getProcessingTime();
+    String result();
 
-    String getErrorMessage();
+    Long processingTime();
+
+    String errorMessage();
 }

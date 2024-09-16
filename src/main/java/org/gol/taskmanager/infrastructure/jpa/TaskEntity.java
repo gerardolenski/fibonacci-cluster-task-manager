@@ -1,12 +1,23 @@
 package org.gol.taskmanager.infrastructure.jpa;
 
-import lombok.*;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity(name = "Task")
 @Getter
 @Setter
 @Builder
@@ -44,7 +55,6 @@ class TaskEntity {
     @Column(name = "job_processing_time")
     private Long jobProcessingTime;
 
-    @Lob
-    @Column(name = "job_result")
+    @Column(name = "job_result", columnDefinition = "TEXT")
     private String jobResult;
 }
