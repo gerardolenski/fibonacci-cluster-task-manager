@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.gol</groupId>
     <artifactId>task-manager</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0</version>
     <name>task-manager</name>
     <description>Fibonacci Manager</description>
 
