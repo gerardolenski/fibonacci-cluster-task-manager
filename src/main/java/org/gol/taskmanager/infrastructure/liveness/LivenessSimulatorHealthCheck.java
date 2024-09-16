@@ -1,11 +1,12 @@
-package org.gol.taskmanager.domain.health;
+package org.gol.taskmanager.infrastructure.liveness;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
+
+import lombok.extern.slf4j.Slf4j;
 
 import static java.nio.file.Files.isRegularFile;
 import static org.springframework.boot.actuate.health.Health.outOfService;

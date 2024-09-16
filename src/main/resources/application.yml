@@ -1,10 +1,10 @@
 server:
-  port: 8080
+  port: ${TOMCAT_PORT:8080}
 
 mq:
   worker-queue-name: ${WORKER_QUEUE_NAME}
   result-consumer:
-    concurrency: ${RESULT_LISTENER_CONCURRENCY}
+    concurrency: ${RESULT_LISTENER_CONCURRENCY:1-10}
     fib-id: ${FIB_RESULT_TYPE_ID:org.gol.fibworker.infrastructure.amq.FibResultMessage}
 
 fib:
@@ -28,8 +28,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
     show-sql: false
+    open-in-view: false
 
 management:
   endpoint:
@@ -46,4 +46,4 @@ management:
 logging:
   level:
     root: info
-    org.gol: ${LOGGING_LEVEL}
+    org.gol: ${LOGGING_LEVEL:info}

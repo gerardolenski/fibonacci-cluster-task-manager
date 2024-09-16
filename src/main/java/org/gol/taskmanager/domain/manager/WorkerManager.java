@@ -1,8 +1,9 @@
 package org.gol.taskmanager.domain.manager;
 
+import org.gol.taskmanager.domain.model.WorkerData;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.gol.taskmanager.domain.model.WorkerData;
 
 @Slf4j
 @RequiredArgsConstructor
