@@ -31,7 +31,7 @@ class FibManager implements FibPort {
                 .distinct()
                 .sorted()
                 .toList();
-        log.info("Starting task {} of FIBONACCI series calculation for: {}", taskId, inList);
+        log.info("Starting tasks of FIBONACCI series calculation: taskId={}, series={}", taskId, inList);
 
         inList.stream()
                 .flatMap(number -> activeAlgorithms.stream()

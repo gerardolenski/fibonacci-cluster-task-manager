@@ -5,14 +5,14 @@ mq:
   worker-queue-name: ${WORKER_QUEUE_NAME}
   result-consumer:
     concurrency: ${RESULT_LISTENER_CONCURRENCY:1-10}
-    fib-id: ${FIB_RESULT_TYPE_ID:org.gol.fibworker.infrastructure.amq.FibResultMessage}
 
 fib:
   algorithms: ${FIB_ALGORITHMS:ITERATIVE,RECURSIVE,BINETS,EXPONENTIAL}
 
 spring:
-  # ActiveMQ broker
-  activemq:
+  # Artemis broker
+  artemis:
+    mode: native
     broker-url: ${BROKER_URL}
     user: ${BROKER_USER}
     password: ${BROKER_PASSWORD}
@@ -30,6 +30,9 @@ spring:
       ddl-auto: update
     show-sql: false
     open-in-view: false
+  jms:
+    cache:
+      session-cache-size: ${JMS_SESSION_CACHE_SIZE:5}
 
 management:
   endpoint:
@@ -41,7 +44,7 @@ management:
         liveness:
           include: livenessSimulator
         readiness:
-          include: db, jms, amqFailover, diskSpace
+          include: db, jms, diskSpace
 
 logging:
   level:
