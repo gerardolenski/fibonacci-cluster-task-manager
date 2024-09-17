@@ -1,6 +1,6 @@
 package org.gol.taskmanager.infrastructure.amq;
 
-import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
 import org.gol.taskmanager.domain.manager.WorkerNotificationPort;
 import org.gol.taskmanager.domain.model.WorkerData;
 import org.springframework.jms.core.JmsTemplate;
