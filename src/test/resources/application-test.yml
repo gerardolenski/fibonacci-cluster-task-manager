@@ -7,6 +7,9 @@ mq:
     concurrency: 1-2
 
 spring:
+  artemis:
+    user: artemis
+    password: artemis
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
