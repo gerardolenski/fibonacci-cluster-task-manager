@@ -1,0 +1,23 @@
+{
+  "taskId": "f804a4bc-f533-4aa0-8eca-b0fc25ebc3f8",
+  "scheduledJobsCount": 5,
+  "finishedJobsCount": 2,
+  "finishedJobs": [
+    {
+      "jobId": "fa2b46f9-f274-4a10-9181-44a8c95591ea",
+      "startTime": "2024-11-04T22:45:40.112",
+      "stopTime": "2024-11-04T22:45:42.512",
+      "jobDetails": "FIBONACCI(10) -> RECURSIVE",
+      "jobResult": "55",
+      "jobProcessingTime": 2400
+    },
+    {
+      "jobId": "8b49b8ec-c6f7-48fc-8dda-2483e4ffdba7",
+      "startTime": "2024-11-04T22:45:49.437",
+      "stopTime": "2024-11-04T22:45:49.442",
+      "jobDetails": "FIBONACCI(10) -> ITERATIVE",
+      "jobResult": "55",
+      "jobProcessingTime": 5
+    }
+  ]
+}
