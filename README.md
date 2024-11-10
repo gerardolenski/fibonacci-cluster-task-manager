@@ -1,5 +1,9 @@
 # FIBONACCI Task Manager
 
+This application was design in hexagonal architecture with few bounded contexts (modules):
+
+![](task-manager-flow.png)
+
 For more description see: [fibonacci-cluster-docker](https://github.com/gerardolenski/fibonacci-cluster-docker) and [fibonacci-cluster-k8s](https://github.com/gerardolenski/fibonacci-cluster-k8s)
 
 ## Requirements
@@ -14,7 +18,7 @@ App can be configured by environment variables:
 - `BROKER_URL` - the URI to connect to the Artemis cluster
 - `BROKER_USER` - the Artemis user
 - `BROKER_PASSWORD` - the Artemis password
-- `WORKER_QUEUE_NAME` - the name of the worker queue
+- `JOB_RESULT_QUEUE_NAME` - the name of the job result queue
 - `RESULT_LISTENER_CONCURRENCY` - the consumer concurrency, by default `1-10`
 - `JMS_SESSION_CACHE_SIZE` - the size of the cache for `SessionConnectionFactory`, by default `5`
 
@@ -37,7 +41,7 @@ The example configuration:
 BROKER_URL=tcp://localhost:61616
 BROKER_USER=artemis
 BROKER_PASSWORD=artemis
-WORKER_QUEUE_NAME=worker
+JOB_RESULT_QUEUE_NAME=job-result
 
 POSTGRES_DATASOURCE_URL=jdbc:postgresql://localhost:5432/task_manager
 POSTGRES_PASSWORD=postgres

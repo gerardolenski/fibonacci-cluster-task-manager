@@ -1,0 +1,33 @@
+{
+  "taskId": "f804a4bc-f533-4aa0-8eca-b0fc25ebc3f8",
+  "requestedNumbersCount": 6,
+  "finishedWithSuccessCount": 2,
+  "finishedWithFailureCount": 1,
+  "inProgressCount": 3,
+  "results": [
+    {
+      "statusCode": 200,
+      "jobDescription": "FIBONACCI(10) -> RECURSIVE",
+      "fibonacciNumber": 55,
+      "startTime": "2024-11-04T22:45:40.112",
+      "stopTime": "2024-11-04T22:45:42.512",
+      "jobProcessingTime": 2400
+    },
+    {
+      "statusCode": 200,
+      "jobDescription": "FIBONACCI(10) -> ITERATIVE",
+      "fibonacciNumber": 55,
+      "startTime": "2024-11-04T22:45:49.437",
+      "stopTime": "2024-11-04T22:45:49.442",
+      "jobProcessingTime": 5
+    },
+    {
+      "statusCode": 406,
+      "jobDescription": "FIBONACCI(100) -> RECURSIVE",
+      "startTime": "2024-11-04T22:45:50.437",
+      "stopTime": "2024-11-04T22:45:50.438",
+      "jobProcessingTime": 1,
+      "errorMessage": "Number is too big for recursive algorithm"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ server:
   port: ${TOMCAT_PORT:8080}
 
 mq:
-  worker-queue-name: ${WORKER_QUEUE_NAME}
+  job-result-queue-name: ${JOB_RESULT_QUEUE_NAME}
   result-consumer:
     concurrency: ${RESULT_LISTENER_CONCURRENCY:1-10}
 
@@ -42,7 +42,7 @@ management:
         enabled: true
       group:
         liveness:
-          include: livenessSimulator
+          include: ping
         readiness:
           include: db, jms, diskSpace
 

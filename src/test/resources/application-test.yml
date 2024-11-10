@@ -2,7 +2,7 @@ server:
   port: 9001
 
 mq:
-  worker-queue-name: worker-test
+  job-result-queue-name: job-result-test
   result-consumer:
     concurrency: 1-2
 
